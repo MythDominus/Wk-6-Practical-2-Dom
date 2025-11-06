@@ -1,9 +1,41 @@
+class Star {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    draw() {
+        star(this.x, this.y);
+
+    }
+
+    fall(speed) {
+        this.y += speed;
+    }
+
+    shoot(speed){
+        this.x += speed;
+    }
+}
+
+let fallingStar;
+let shootingStar;
+
 function setup() {
     createCanvas(400, 400);
+    fallingStar = new Star(200, 0);
+    shootingStar = new Star(0, 200);
+
+    noStroke()
 }
 
 function draw() {
     background(0);
+    shootingStar.shoot(5);
+    shootingStar.draw();
+
+    fallingStar.fall(2);
+    fallingStar.draw();
 }
 
 /**
@@ -20,3 +52,4 @@ function star(x, y) {
     triangle(x - 20, y - 5, x, y + 10, x - 35, y + 30);
     triangle(x, y + 10, x + 20, y - 5, x + 35, y + 30);
 }
+
